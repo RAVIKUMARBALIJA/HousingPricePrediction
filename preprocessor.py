@@ -13,6 +13,11 @@ class FillNAandCleanUp(BaseEstimator, TransformerMixin):
         return self
     def transform(self, X, y=None):
         X.fillna(value=X.mean()[['LotFrontage']], inplace=True)
+        X.fillna(value=X.mode()[['BsmtHalfBath']], inplace=True)
+        X.fillna(value=X.mode()[['BsmtFullBath']], inplace=True)
+        X.fillna(value=X.mode()[['GarageCars']], inplace=True)
+        X.fillna(value=X.mean()[['GarageArea']], inplace=True)
+        X.fillna(value=X.median()[['BsmtFinSF1']], inplace=True)
         X['MasVnrArea'].fillna(value=0, inplace=True)
         
         #interpolation, we have to reindex the dataframe. Then interpolate, then drop(reset) the index.
