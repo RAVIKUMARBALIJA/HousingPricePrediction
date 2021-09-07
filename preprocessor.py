@@ -13,12 +13,13 @@ class FillNAandCleanUp(BaseEstimator, TransformerMixin):
         return self
     def transform(self, X, y=None):
         X.fillna(value=X.mean()[['LotFrontage']], inplace=True)
-        X.fillna(value=X.mode()[['BsmtHalfBath']], inplace=True)
-        X.fillna(value=X.mode()[['BsmtFullBath']], inplace=True)
-        X.fillna(value=X.mode()[['GarageCars']], inplace=True)
         X.fillna(value=X.mean()[['GarageArea']], inplace=True)
         X.fillna(value=X.median()[['BsmtFinSF1']], inplace=True)
         X['MasVnrArea'].fillna(value=0, inplace=True)
+        X['GarageCars'].fillna(value=2, inplace=True)
+        X['BsmtHalfBath'].fillna(value=0, inplace=True)
+        X['BsmtFullBath'].fillna(value=0, inplace=True)
+        
         
         #interpolation, we have to reindex the dataframe. Then interpolate, then drop(reset) the index.
         X.index = X['YearBuilt']
@@ -50,6 +51,7 @@ class FillNAandCleanUp(BaseEstimator, TransformerMixin):
 
         X.drop(X[X.Electrical.isnull()].index, inplace=True)
         X.drop('FireplaceQu', axis = 1, inplace = True)
+        X.dropna(how='any',axis=0,inplace=True)
         return X
 
 
@@ -188,3 +190,4 @@ def load_encoder():
                                                             lblEncode=False))
       ])
     return cat_feature_encod_pipeline
+
