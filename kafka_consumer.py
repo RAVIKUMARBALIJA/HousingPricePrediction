@@ -2,7 +2,7 @@ from kafka import KafkaProducer, KafkaConsumer
 import json
 from app import mongo
 import pandas as pd
-from utils.ai_model import *
+from preprocessor import *
 
 consumer = KafkaConsumer(
     "house_sales",
