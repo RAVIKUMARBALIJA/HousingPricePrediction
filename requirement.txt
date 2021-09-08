@@ -30,3 +30,5 @@ Werkzeug==2.0.1
 zipp==3.5.0
 seaborn
 matplotlib
+sqlalchemy==1.4.23
+pyhive==0.6.4
