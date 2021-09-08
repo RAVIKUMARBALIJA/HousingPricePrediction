@@ -6,12 +6,19 @@ from pyspark.streaming import StreamingContext
 from pyspark.streaming.kafka import KafkaUtils                                                                          
 import pickle
 
+def load_columns():
+    lst_columns=pickle.load(open('data/columns','rb'))
+    return lst_columns
+
 def handle_rdd(rdd):                                                                                                    
     if not rdd.isEmpty():                                                                                               
         global ss                                                                                                       
-        df = ss.createDataFrame(rdd, schema=['text', 'word', 'length', 'sentiment'])                                                
+        df = ss.createDataFrame(rdd, schema=load_columns())                                              
         df.show()                                                                                                       
         df.write.saveAsTable(name='default.housingprice', format='hive', mode='append')
+
+def handle_prediction(record):
+    
 
                                                                                                                                                            
 sc = SparkContext(appName="Something")                                                                                     
@@ -33,7 +40,10 @@ print('*'*10)
                                                                                                                         
 #transform = lines.map(lambda tweet: (tweet, int(len(tweet.split())), int(len(tweet)), sid.polarity_scores(tweet)))
 print(lines)
-transform = lines.map(lambda tweet: (tweet, int(len(tweet.split())), int(len(tweet)), str(sid.predict_proba(tfidf.transform([clean_text(tweet)]))[0])))                                      
+transform = lines.map(lambda tweet: (tweet, int(len(tweet.split())), int(len(tweet)), str(sid.predict_proba(tfidf.transform([clean_text(tweet)]))[0])))
+
+
+#transform = lines.map(lambda line : ())
 
 transform.foreachRDD(handle_rdd)                                                                                        
                                                                                                                         

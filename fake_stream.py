@@ -8,7 +8,7 @@ import sys
 BROKER = 'localhost:9092'                                                                                               
 TOPIC = 'housingprice'                                                                                                      
                                                                                                                         
-TEST_FILE = 'data/train.csv'                                                                                     
+TEST_FILE = 'data/for_strem.csv'                                                                                     
 RECORDS = open(TEST_FILE).read().splitlines()                                                                             
                                                                                                                         
 try:                                                                                                                    
