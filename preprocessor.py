@@ -191,3 +191,5 @@ def load_encoder():
       ])
     return cat_feature_encod_pipeline
 
+def load_predictor():
+    return pickle.load(open('models/predictor.pkl','rb'))

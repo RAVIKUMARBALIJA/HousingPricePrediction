@@ -17,8 +17,7 @@ def handle_rdd(rdd):
         df.show()                                                                                                       
         df.write.saveAsTable(name='default.housingprice', format='hive', mode='append')
 
-def handle_prediction(record):
-    
+
 
                                                                                                                                                            
 sc = SparkContext(appName="Something")                                                                                     

@@ -5,6 +5,8 @@ import sklearn
 import sys
 from sklearn.pipeline import Pipeline
 from sklearn.base import BaseEstimator,TransformerMixin
+import pickle
+
 
 
 
