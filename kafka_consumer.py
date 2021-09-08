@@ -38,8 +38,7 @@ def df_consume_kafka():
                 data[col] = ""
         x_test = pd.DataFrame.from_records([data])
         # x_test = fillna_cleanup_pipeline.transform(x_test)
-        x_test = cat_feature_encod_pipeline.transform(x_test)
+        # x_test = cat_feature_encod_pipeline.transform(x_test)
         db_data = x_test.to_dict(orient="records")
-        mongo.db.house_sales_test.insert_one(data)
 
 df_consume_kafka()
