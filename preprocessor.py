@@ -7,6 +7,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.base import BaseEstimator,TransformerMixin
 from utils import getMissingDataFeatures,getNullPercentage,dropFeaturesWithNulls,getCatFeatures,getCatFeaturesWithNulls,fillNAwithBlank
 from utils import formulateCondition,conditionBasedImputation
+import pickle
 
 class FillNAandCleanUp(BaseEstimator, TransformerMixin):
     def fit(self, X, y=None):
@@ -191,5 +192,3 @@ def load_encoder():
       ])
     return cat_feature_encod_pipeline
 
-def load_predictor():
-    return pickle.load(open('models/predictor.pkl','rb'))

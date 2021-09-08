@@ -60,3 +60,11 @@ def conditionBasedImputation(row, condition, lst_features):
         for feature in lst_features:
             row[feature] = 'NA'
     return row
+
+
+def loadcolumns():
+    return pickle.load(open('data/columns','rb'))
+
+
+def load_predictor():
+    return pickle.load(open('models/predictor.pkl','rb'))
