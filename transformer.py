@@ -8,6 +8,7 @@ import pickle
 from utils import loadcolumns,load_predictor,loaddtypes
 from preprocessor import load_encoder
 import numpy as np
+import pandas as pd
 
 def handle_rdd(rdd):                                                                                                    
     if not rdd.isEmpty():                                                                                               
