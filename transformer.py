@@ -13,7 +13,7 @@ import pandas as pd
 def handle_rdd(rdd):                                                                                                    
     if not rdd.isEmpty():                                                                                               
         global ss                                                                                                       
-        df = ss.createDataFrame(rdd, schema=loadcolumns())                                        
+        df = ss.createDataFrame(rdd, schema=loadcolumns(True))                                        
         df.show()                                                                                                       
         df.write.saveAsTable(name='default.housingprice', format='hive', mode='append')
 
