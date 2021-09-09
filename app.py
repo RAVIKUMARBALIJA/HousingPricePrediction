@@ -10,6 +10,7 @@ from random import randint
 import pickle
 
 from preprocessor import *
+from transformer import perform_predictions
 
 import os
 path = os.path.dirname(os.path.abspath(__file__))
@@ -62,8 +63,6 @@ def test_model():
 def house_price_predict():
     predict_sale = ""
     requst_data = dict(request.form)
-    if request.method=="POST":
-        print("POST request", requst_data, )
     columns = pickle.load(open("data/columns", "rb"))
     form_fields = json.load(open(path+"/model_form.json"))
     form_fields_new = []
@@ -76,9 +75,10 @@ def house_price_predict():
             obj["options"] = globals()[f'lst_{obj["field"]}_cat']
         form_fields_new.append(obj)
     
-    print(len(form_fields_new))
     if request.method == "POST":
-        producer.send(topic=app.config["TOPIC"], value=json.dumps(requst_data))
+        line = [requst_data[col] for col in columns]
+        producer.send(topic=app.config["TOPIC"], value=line)
+        predict_sale = perform_predictions(line)
     return render_template(
         "houseprice.html",
         form_fields=form_fields_new,
