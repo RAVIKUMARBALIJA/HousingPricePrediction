@@ -3,12 +3,13 @@
 from kafka import KafkaProducer                                                                                         
 from random import randint                                                                                              
 from time import sleep                                                                                                  
-import sys                                                                                                              
+import sys 
+import os                                                                                                             
                                                                                                                         
 BROKER = 'localhost:9092'                                                                                               
 TOPIC = 'housingprice'                                                                                                      
                                                                                                                         
-TEST_FILE = 'data/for_strem.csv'                                                                                     
+TEST_FILE = os.path.abspath('data/for_stream_train.csv')                                                                                    
 RECORDS = open(TEST_FILE).read().splitlines()                                                                             
                                                                                                                         
 try:                                                                                                                    
