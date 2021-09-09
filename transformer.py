@@ -5,7 +5,9 @@ from pyspark.sql import SparkSession
 from pyspark.streaming import StreamingContext                                                                         
 from pyspark.streaming.kafka import KafkaUtils                                                                          
 import pickle
-from utils import loadcolumns,load_predictor
+from utils import loadcolumns,load_predictor,loaddtypes
+from preprocessor import load_encoder
+import numpy as np
 
 def handle_rdd(rdd):                                                                                                    
     if not rdd.isEmpty():                                                                                               
@@ -14,11 +16,25 @@ def handle_rdd(rdd):
         df.show()                                                                                                       
         df.write.saveAsTable(name='default.housingprice', format='hive', mode='append')
 
-def perform_predictions(X):
-    model= load_predictor()
-    
+def preprocess_data(record):
+    encoder=load_encoder()
+    record=pd.DataFrame(np.array(record.split(',')).reshape(1,-1),columns=loadcolumns())
+    record=record.astype(dtype=loaddtypes(),copy=True)
+    record=encoder.transform(record)
+    return record
 
-                                                                                                                                                           
+def perform_predictions(X):
+    X=preprocess_data(X)
+    model=load_predictor()
+    y=model.predict(X)[0]
+    return y
+
+def apply_predict(X):
+    y=perform_predictions(X)
+    X=X+','+str(y)
+    return tuple(X.split(','))
+
+                                                                                                                                                      
 sc = SparkContext(appName="Something")                                                                                   
 ssc = StreamingContext(sc, 5)                                                                                           
                                                                                                                         
@@ -36,12 +52,10 @@ lines = ks.map(lambda x: x[1])
 
 print('*'*10)                                                      
                                                                                                                         
-#transform = lines.map(lambda tweet: (tweet, int(len(tweet.split())), int(len(tweet)), sid.polarity_scores(tweet)))
 print(lines)
-transform = lines.map(lambda tweet: (tweet, int(len(tweet.split())), int(len(tweet)), str(sid.predict_proba(tfidf.transform([clean_text(tweet)]))[0])))
 
+transform = lines.map(lambda line: apply_predict(line))
 
-#transform = lines.map(lambda line : ())
 
 transform.foreachRDD(handle_rdd)                                                                                     
                                                                                                                         

@@ -68,3 +68,6 @@ def loadcolumns():
 
 def load_predictor():
     return pickle.load(open('models/predictor.pkl','rb'))
+
+def loaddtypes():
+    return pickle.load(open('data/dtypes','rb'))
