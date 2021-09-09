@@ -18,8 +18,10 @@ def handle_rdd(rdd):
         df.write.saveAsTable(name='default.housingprice', format='hive', mode='append')
 
 def preprocess_data(record):
+    print(record)
+    #print(type(record))
     encoder=load_encoder()
-    record=pd.DataFrame(np.array(record.split(',')).reshape(1,-1),columns=loadcolumns())
+    record=pd.DataFrame(np.array(str(record).split(',')).reshape(1,-1),columns=loadcolumns())
     record=record.astype(dtype=loaddtypes(),copy=True)
     record=encoder.transform(record)
     return record
@@ -53,9 +55,10 @@ lines = ks.map(lambda x: x[1])
 
 print('*'*10)                                                      
                                                                                                                         
-print(lines)
+#print(lines)
 
 transform = lines.map(lambda line: apply_predict(line))
+#transform = lines.map(lambda line: print(line))
 
 
 transform.foreachRDD(handle_rdd)                                                                                     
