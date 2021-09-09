@@ -1,0 +1,355 @@
+[
+     {
+          "lable": "M S Sub Class",
+          "field": "MSSubClass"
+     },
+     {
+          "lable": "M S Zoning",
+          "field": "MSZoning",
+          "type": "str"
+     },
+     {
+          "lable": "Lot Frontage",
+          "field": "LotFrontage"
+     },
+     {
+          "lable": "Lot Area",
+          "field": "LotArea"
+     },
+     {
+          "lable": "Street",
+          "field": "Street",
+          "type": "str"
+     },
+     {
+          "lable": "Alley",
+          "field": "Alley"
+     },
+     {
+          "lable": "Lot Shape",
+          "field": "LotShape",
+          "type": "str"
+     },
+     {
+          "lable": "Land Contour",
+          "field": "LandContour",
+          "type": "str"
+     },
+     {
+          "lable": "Utilities",
+          "field": "Utilities",
+          "type": "str"
+     },
+     {
+          "lable": "Lot Config",
+          "field": "LotConfig",
+          "type": "str"
+     },
+     {
+          "lable": "Land Slope",
+          "field": "LandSlope",
+          "type": "str"
+     },
+     {
+          "lable": "Neighborhood",
+          "field": "Neighborhood",
+          "type": "str"
+     },
+     {
+          "lable": "Condition1",
+          "field": "Condition1",
+          "type": "str"
+     },
+     {
+          "lable": "Condition2",
+          "field": "Condition2",
+          "type": "str"
+     },
+     {
+          "lable": "Bldg Type",
+          "field": "BldgType",
+          "type": "str"
+     },
+     {
+          "lable": "House Style",
+          "field": "HouseStyle",
+          "type": "str"
+     },
+     {
+          "lable": "Overall Qual",
+          "field": "OverallQual"
+     },
+     {
+          "lable": "Overall Cond",
+          "field": "OverallCond"
+     },
+     {
+          "lable": "Year Built",
+          "field": "YearBuilt"
+     },
+     {
+          "lable": "Year Remod Add",
+          "field": "YearRemodAdd"
+     },
+     {
+          "lable": "Roof Style",
+          "field": "RoofStyle",
+          "type": "str"
+     },
+     {
+          "lable": "Roof Matl",
+          "field": "RoofMatl",
+          "type": "str"
+     },
+     {
+          "lable": "Exterior1st",
+          "field": "Exterior1st",
+          "type": "str"
+     },
+     {
+          "lable": "Exterior2nd",
+          "field": "Exterior2nd",
+          "type": "str"
+     },
+     {
+          "lable": "Mas Vnr Type",
+          "field": "MasVnrType"
+     },
+     {
+          "lable": "Mas Vnr Area",
+          "field": "MasVnrArea"
+     },
+     {
+          "lable": "Exter Qual",
+          "field": "ExterQual",
+          "type": "str"
+     },
+     {
+          "lable": "Exter Cond",
+          "field": "ExterCond",
+          "type": "str"
+     },
+     {
+          "lable": "Foundation",
+          "field": "Foundation",
+          "type": "str"
+     },
+     {
+          "lable": "Bsmt Qual",
+          "field": "BsmtQual",
+          "type": "str"
+     },
+     {
+          "lable": "Bsmt Cond",
+          "field": "BsmtCond",
+          "type": "str"
+     },
+     {
+          "lable": "Bsmt Exposure",
+          "field": "BsmtExposure",
+          "type": "str"
+     },
+     {
+          "lable": "Bsmt Fin Type1",
+          "field": "BsmtFinType1",
+          "type": "str"
+     },
+     {
+          "lable": "Bsmt Fin S F1",
+          "field": "BsmtFinSF1"
+     },
+     {
+          "lable": "Bsmt Fin Type2",
+          "field": "BsmtFinType2",
+          "type": "str"
+     },
+     {
+          "lable": "Bsmt Fin S F2",
+          "field": "BsmtFinSF2"
+     },
+     {
+          "lable": "Bsmt Unf S F",
+          "field": "BsmtUnfSF"
+     },
+     {
+          "lable": "Total Bsmt S F",
+          "field": "TotalBsmtSF"
+     },
+     {
+          "lable": "Heating",
+          "field": "Heating",
+          "type": "str"
+     },
+     {
+          "lable": "Heating Q C",
+          "field": "HeatingQC",
+          "type": "str"
+     },
+     {
+          "lable": "Central Air",
+          "field": "CentralAir",
+          "type": "str"
+     },
+     {
+          "lable": "Electrical",
+          "field": "Electrical",
+          "type": "str"
+     },
+     {
+          "lable": "Flr S F",
+          "field": "1stFlrSF"
+     },
+     {
+          "lable": "Flr S F",
+          "field": "2ndFlrSF"
+     },
+     {
+          "lable": "Low Qual Fin S F",
+          "field": "LowQualFinSF"
+     },
+     {
+          "lable": "Gr Liv Area",
+          "field": "GrLivArea"
+     },
+     {
+          "lable": "Bsmt Full Bath",
+          "field": "BsmtFullBath"
+     },
+     {
+          "lable": "Bsmt Half Bath",
+          "field": "BsmtHalfBath"
+     },
+     {
+          "lable": "Full Bath",
+          "field": "FullBath"
+     },
+     {
+          "lable": "Half Bath",
+          "field": "HalfBath"
+     },
+     {
+          "lable": "Bedroom Abv Gr",
+          "field": "BedroomAbvGr"
+     },
+     {
+          "lable": "Kitchen Abv Gr",
+          "field": "KitchenAbvGr"
+     },
+     {
+          "lable": "Kitchen Qual",
+          "field": "KitchenQual",
+          "type": "str"
+     },
+     {
+          "lable": "Tot Rms Abv Grd",
+          "field": "TotRmsAbvGrd"
+     },
+     {
+          "lable": "Functional",
+          "field": "Functional",
+          "type": "str"
+     },
+     {
+          "lable": "Fireplaces",
+          "field": "Fireplaces"
+     },
+     {
+          "lable": "Fireplace Qu",
+          "field": "FireplaceQu"
+     },
+     {
+          "lable": "Garage Type",
+          "field": "GarageType",
+          "type": "str"
+     },
+     {
+          "lable": "Garage Yr Blt",
+          "field": "GarageYrBlt"
+     },
+     {
+          "lable": "Garage Finish",
+          "field": "GarageFinish",
+          "type": "str"
+     },
+     {
+          "lable": "Garage Cars",
+          "field": "GarageCars"
+     },
+     {
+          "lable": "Garage Area",
+          "field": "GarageArea"
+     },
+     {
+          "lable": "Garage Qual",
+          "field": "GarageQual",
+          "type": "str"
+     },
+     {
+          "lable": "Garage Cond",
+          "field": "GarageCond",
+          "type": "str"
+     },
+     {
+          "lable": "Paved Drive",
+          "field": "PavedDrive",
+          "type": "str"
+     },
+     {
+          "lable": "Wood Deck S F",
+          "field": "WoodDeckSF"
+     },
+     {
+          "lable": "Open Porch S F",
+          "field": "OpenPorchSF"
+     },
+     {
+          "lable": "Enclosed Porch",
+          "field": "EnclosedPorch"
+     },
+     {
+          "lable": "Ssn Porch",
+          "field": "3SsnPorch"
+     },
+     {
+          "lable": "Screen Porch",
+          "field": "ScreenPorch"
+     },
+     {
+          "lable": "Pool Area",
+          "field": "PoolArea"
+     },
+     {
+          "lable": "Pool Q C",
+          "field": "PoolQC"
+     },
+     {
+          "lable": "Fence",
+          "field": "Fence"
+     },
+     {
+          "lable": "Misc Feature",
+          "field": "MiscFeature"
+     },
+     {
+          "lable": "Misc Val",
+          "field": "MiscVal"
+     },
+     {
+          "lable": "Mo Sold",
+          "field": "MoSold"
+     },
+     {
+          "lable": "Yr Sold",
+          "field": "YrSold"
+     },
+     {
+          "lable": "Sale Type",
+          "field": "SaleType",
+          "type": "str"
+     },
+     {
+          "lable": "Sale Condition",
+          "field": "SaleCondition",
+          "type": "str"
+     }
+]
