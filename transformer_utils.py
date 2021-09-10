@@ -5,14 +5,8 @@ from preprocessor import load_encoder
 import numpy as np
 
 
-def handle_rdd(rdd):                                                                                                    
-    if not rdd.isEmpty():                                                                                               
-        global ss                                                                                                       
-        df = ss.createDataFrame(rdd, schema=loadcolumns())                                        
-        df.show()                                                                                                       
-        df.write.saveAsTable(name='default.housingprice', format='hive', mode='append')
-
 def preprocess_data(record):
+    print("record",record)
     encoder=load_encoder()
     record=pd.DataFrame(np.array(record.split(',')).reshape(1,-1),columns=loadcolumns())
     record=record.astype(dtype=loaddtypes(),copy=True)

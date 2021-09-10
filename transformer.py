@@ -15,7 +15,12 @@ ss.sparkContext.setLogLevel('WARN')
 ks = KafkaUtils.createDirectStream(ssc, ['housingprice'], {'metadata.broker.list': 'localhost:9092'})                       
 
 
-
+def handle_rdd(rdd):                                                                                                    
+    if not rdd.isEmpty():                                                                                               
+        global ss                                                                                                       
+        df = ss.createDataFrame(rdd, schema=loadcolumns())                                        
+        df.show()                                                                                                       
+        df.write.saveAsTable(name='default.housingprice', format='hive', mode='append')
                                                                                                                  
 lines = ks.map(lambda x: x[1])
 
