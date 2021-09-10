@@ -14,12 +14,11 @@ def handle_rdd(rdd):
     if not rdd.isEmpty():                                                                                               
         global ss                                                                                                       
         df = ss.createDataFrame(rdd, schema=loadcolumns(True))                                        
-        df.show()                                                                       
-        #commenting hive table insert                                
-        #df.write.saveAsTable(name='default.housingprice', format='hive', mode='append')
+        df.show()                                                                                                       
+        df.write.saveAsTable(name='default.housingprice', format='hive', mode='append')
 
 def preprocess_data(record):
-    #print(record)
+    print(record)
     #print(type(record))
     encoder=load_encoder()
     record=pd.DataFrame(np.array(str(record).split(',')).reshape(1,-1),columns=loadcolumns())
@@ -35,9 +34,7 @@ def perform_predictions(X):
 
 def apply_predict(X):
     y=perform_predictions(X)
-    #print(X)
     X=X+','+str(y)
-    #print(f'Predicted SalePrice : {y}')
     return tuple(X.split(','))
 
                                                                                                                                                       
@@ -50,7 +47,8 @@ ss.sparkContext.setLogLevel('WARN')
                                                                                                                         
 ks = KafkaUtils.createDirectStream(ssc, ['housingprice'], {'metadata.broker.list': 'localhost:9092'})                       
 
-
+#sid = SentimentIntensityAnalyzer()
+#added below for custom sentiment analysis
 
                                                                                                                  
 lines = ks.map(lambda x: x[1])
@@ -60,7 +58,7 @@ print('*'*10)
 #print(lines)
 
 transform = lines.map(lambda line: apply_predict(line))
-
+#transform = lines.map(lambda line: print(line))
 
 
 transform.foreachRDD(handle_rdd)                                                                                     
