@@ -62,12 +62,18 @@ def conditionBasedImputation(row, condition, lst_features):
     return row
 
 
-def loadcolumns():
-    return pickle.load(open('data/columns','rb'))
+def loadcolumns(target=False):
+    if(not(target)):
+        return pickle.load(open('data/columns','rb'))
+    else:
+        return pickle.load(open('data/columnswithtarget','rb'))
 
 
 def load_predictor():
     return pickle.load(open('models/predictor.pkl','rb'))
 
-def loaddtypes():
-    return pickle.load(open('data/dtypes','rb'))
+def loaddtypes(target=False):
+    if(not(target)):
+        return pickle.load(open('data/dtypemapper','rb'))
+    else:
+        return pickle.load(open('data/dtypemapperwithtarget','rb'))
