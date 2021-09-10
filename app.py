@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template, jsonify
 import pandas as pd
-from kafka import KafkaProducer, KafkaConsumer
+from kafka import KafkaProducer
 import json
 from threading import Thread
 from werkzeug.utils import redirect
@@ -10,7 +10,7 @@ from random import randint
 import pickle
 
 from preprocessor import *
-from transformer import perform_predictions
+from transformer_utils import perform_predictions
 
 import os
 path = os.path.dirname(os.path.abspath(__file__))
