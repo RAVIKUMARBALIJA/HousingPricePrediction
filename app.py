@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template, jsonify
+from numpy.core.numeric import True_
 import pandas as pd
 from kafka import KafkaProducer, KafkaConsumer
 import json
@@ -85,3 +86,5 @@ def house_price_predict():
         predict_sale=predict_sale
     )
 
+if __name__ == "__main__":
+    app.run(host='127.0.0.1',port=5000,debug=True)
