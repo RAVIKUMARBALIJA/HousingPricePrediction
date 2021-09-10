@@ -1,44 +1,8 @@
-#!/usr/bin/python3                                                                                                      
-                                                                                                                        
-from pyspark import SparkContext                                                                                        
-from pyspark.sql import SparkSession                                                                                    
-from pyspark.streaming import StreamingContext                                                                         
-from pyspark.streaming.kafka import KafkaUtils                                                                          
-import pickle
-from utils import loadcolumns,load_predictor,loaddtypes
-from preprocessor import load_encoder
-import numpy as np
-import pandas as pd
-
-def handle_rdd(rdd):                                                                                                    
-    if not rdd.isEmpty():                                                                                               
-        global ss                                                                                                       
-        df = ss.createDataFrame(rdd, schema=loadcolumns(True))                                        
-        df.show()                                                                       
-        #commenting hive table insert                                
-        #df.write.saveAsTable(name='default.housingprice', format='hive', mode='append')
-
-def preprocess_data(record):
-    #print(record)
-    #print(type(record))
-    encoder=load_encoder()
-    record=pd.DataFrame(np.array(str(record).split(',')).reshape(1,-1),columns=loadcolumns())
-    record=record.astype(dtype=loaddtypes(),copy=True)
-    record=encoder.transform(record)
-    return record
-
-def perform_predictions(X):
-    X=preprocess_data(X)
-    model=load_predictor()
-    y=model.predict(X)[0]
-    return y
-
-def apply_predict(X):
-    y=perform_predictions(X)
-    #print(X)
-    X=X+','+str(y)
-    #print(f'Predicted SalePrice : {y}')
-    return tuple(X.split(','))
+from pyspark import SparkContext
+from pyspark.sql import SparkSession
+from pyspark.streaming import StreamingContext
+from pyspark.streaming.kafka import KafkaUtils
+from transformer_utils import *
 
                                                                                                                                                       
 sc = SparkContext(appName="Something")                                                                                   
@@ -51,7 +15,12 @@ ss.sparkContext.setLogLevel('WARN')
 ks = KafkaUtils.createDirectStream(ssc, ['housingprice'], {'metadata.broker.list': 'localhost:9092'})                       
 
 
-
+def handle_rdd(rdd):                                                                                                    
+    if not rdd.isEmpty():                                                                                               
+        global ss                                                                                                       
+        df = ss.createDataFrame(rdd, schema=loadcolumns())                                        
+        df.show()                                                                                                       
+        df.write.saveAsTable(name='default.housingprice', format='hive', mode='append')
                                                                                                                  
 lines = ks.map(lambda x: x[1])
 

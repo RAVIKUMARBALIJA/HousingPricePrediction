@@ -74,6 +74,7 @@ def load_predictor():
 
 def loaddtypes(target=False):
     if(not(target)):
-        return pickle.load(open('data/dtypemapper','rb'))
+        res = pickle.load(open('data/dtypemapper','rb'))
+        return res
     else:
         return pickle.load(open('data/dtypemapperwithtarget','rb'))
