@@ -1,0 +1,5 @@
+[2021-09-10 23:03:21,577] WARN Unable to read additional data from client sessionid 0x1000133ad880001, likely client has closed socket (org.apache.zookeeper.server.NIOServerCnxn)
+[2021-09-10 23:03:21,596] INFO Closed socket connection for client /127.0.0.1:40236 which had sessionid 0x1000133ad880001 (org.apache.zookeeper.server.NIOServerCnxn)
+[2021-09-10 23:03:23,028] INFO Accepted socket connection from /127.0.0.1:41450 (org.apache.zookeeper.server.NIOServerCnxnFactory)
+[2021-09-10 23:03:23,029] INFO Client attempting to renew session 0x1000133ad880001 at /127.0.0.1:41450 (org.apache.zookeeper.server.ZooKeeperServer)
+[2021-09-10 23:03:23,029] INFO Established session 0x1000133ad880001 with negotiated timeout 6000 for client /127.0.0.1:41450 (org.apache.zookeeper.server.ZooKeeperServer)

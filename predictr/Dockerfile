@@ -14,9 +14,16 @@ RUN pip install -r requirement.txt
 
 COPY . /app
 
-ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-RUN export JAVA_HOME
+
+# install Java
+USER root
+RUN echo "deb http://security.debian.org/debian-security stretch/updates main" >> /etc/apt/sources.list                                                   
+RUN mkdir -p /usr/share/man/man1 && \
+    apt-get update -y && \
+    apt-get install -y openjdk-8-jdk
+
+RUN apt-get install unzip -y && \
+    apt-get autoremove -y
 
 
-#ENTRYPOINT python fake_stream.py
-ENTRYPOINT spark-submit --jars spark-streaming-kafka-0-8-assembly_2.11-2.4.8.jar transformer.py
+ENTRYPOINT spark-submit --jars spark-streaming-kafka-0-8-assembly_2.11-2.4.8.jar wsgi.py

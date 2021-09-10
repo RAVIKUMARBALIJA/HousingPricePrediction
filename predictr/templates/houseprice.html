@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Preict House Price{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <h3>House Features</h3>
+    <form method="POST" action="/house_price_predict" enctype=multipart/form-data style="margin-bottom: 100px;">
+        {% for obj in form_fields %}
+          <span style="width: 300px; display: inline-block; margin:10px">
+            {% if obj.get('type') != 'str' %}
+              <label for='{{obj["field"]}}'>{{obj['lable']}}:  </label>
+              <input name="{{obj['field']}}" type="number" {% if obj.get('value') %}value={{obj.get('value', '')}}{% endif %}>
+            {% else %}
+              <label for='{{obj["field"]}}'>{{obj['lable']}}:  </label>
+              <select name="{{obj['field']}}">
+                {% for option in obj['options'] %}
+                  <option {% if obj.get('value') == option %}selected{% endif %}>{{option}}</option>
+                {% endfor %}
+              </select>
+            {% endif %}
+          </span>
+        {% endfor %}
+        <div style="margin: 10px; width: 100%; text-align: center;">
+          <input style="width: 200px; align-items: center;" type="submit" value="Predict">
+        </div>
+    </form>
+    <div><strong>House Price: <strong>{{predict_sale}}</div>
+{% endblock %}
