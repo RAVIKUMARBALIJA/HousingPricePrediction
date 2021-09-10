@@ -6,9 +6,9 @@ import numpy as np
 
 
 def preprocess_data(record):
-    print("record",record)
     encoder=load_encoder()
-    record=pd.DataFrame(np.array(record.split(',')).reshape(1,-1),columns=loadcolumns())
+    line = np.array(record.split(',')).reshape(1,-1)
+    record=pd.DataFrame(line,columns=loadcolumns())
     record=record.astype(dtype=loaddtypes(),copy=True)
     record=encoder.transform(record)
     return record

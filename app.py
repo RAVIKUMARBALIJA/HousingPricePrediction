@@ -9,6 +9,8 @@ from random import randint
 # from pyhive import hive
 
 import pickle
+import re
+
 
 from preprocessor import *
 from transformer_utils import perform_predictions
@@ -67,19 +69,32 @@ def house_price_predict():
     columns = pickle.load(open("data/columns", "rb"))
     form_fields = json.load(open(path+"/model_form.json"))
     form_fields_new = []
-    for obj in form_fields:
-        if obj["field"] not in columns:
-            continue
-        if requst_data:
-            obj["value"] = requst_data.get(obj["field"], "")
-        if obj.get("type") == "str":
-            obj["options"] = globals()[f'lst_{obj["field"]}_cat']
-        form_fields_new.append(obj)
+    # for obj in form_fields:
+    #     if obj["field"] not in columns:
+    #         continue
+    #     if requst_data:
+    #         obj["value"] = requst_data.get(obj["field"], "")
+    #     if obj.get("type") == "str":
+    #         obj["options"] = globals()[f'lst_{obj["field"]}_cat']
+    #     form_fields_new.append(obj)
+    
+    for col in columns:
+        form_fields_new.append({
+            "field": col,
+            "lable": " ".join(re.findall('[A-Z][^A-Z]*', col)),
+            "value": requst_data.get(col, ""),
+            "type": "int"
+        })
+        try:
+            form_fields_new[-1]["options"] = globals()[f'lst_{form_fields_new[-1]["field"]}_cat']
+            form_fields_new[-1]["type"] = "str"
+        except:
+            pass
     
     if request.method == "POST":
         line = [requst_data[col] for col in columns]
         producer.send(topic=app.config["TOPIC"], value=line)
-        predict_sale = perform_predictions(line)
+        predict_sale = perform_predictions(",".join(line))
     return render_template(
         "houseprice.html",
         form_fields=form_fields_new,
