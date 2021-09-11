@@ -33,10 +33,12 @@ Housingpriceprediction
         
         spark-submit --jars home/ravikumar/spark-streaming-kafka-0-8-assembly_2.11-2.4.3.jar wsgi.py
         
+        application  url : http:127.0.0.1:7000/house_price_predict
+        
         Result : UI has been brought up. you may supply required values and click on predict.
         You will be able to see the predcited SalePrice.
 
-### 2. fake streaming the dataset using kafka - predict the Sale price and show it on the UI.
+### 2. fake streaming the dataset using kafka - predict the Sale price and show it on the console UI.
 ### file data set -pyspark - kafka - prediction - show it on the console
 ### run below commands to bring kafka zookeeper services, kafka topic and then run the spark-submit job to start fake streaming and prediction.
     i. ~$ cd kafka/
