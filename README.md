@@ -7,6 +7,7 @@ Housingpriceprediction
 ### Flask - pyspark - kafka  - Ui integration - successfull
 ### 1. run below commands to bring kafka zookeeper services, kafka topic and then run the spark-submit job to bring the application up.
    i. ~$ cd kafka/
+   
    ~/kafka$ bin/zookeeper-server-start.sh config/zookeeper.properties
       
    ii.  ~$ cd kafka/
