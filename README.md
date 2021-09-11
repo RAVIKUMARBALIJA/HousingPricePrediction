@@ -72,7 +72,9 @@ Housingpriceprediction
    
  
    result : 80% completed.
+   
    Please refer to HousingPricePrediction/application_screens.docx for screenshots of the applications.
+   
 
 
 # descriptions
