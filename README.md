@@ -61,7 +61,7 @@ Housingpriceprediction
 
 ### 4. Docker- compose solution for the 2nd solution above.
    setup is almost completed. servicecs are coming up. but However solution is trying to bring zookeeper and kafka services twice on the same port due to which docker-compose build is not successfull.
-   
+   commands: 
    i. cd hackathon
    
    ii. source hackathon2/bin/activate
