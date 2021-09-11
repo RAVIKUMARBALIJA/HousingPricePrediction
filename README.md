@@ -6,16 +6,23 @@ Housingpriceprediction
 ## Without Docker
 ### Flask - pyspark - kafka  - Ui integration - successfull
 ### 1. run below commands to bring kafka zookeeper services, kafka topic and then run the spark-submit job to bring the application up.
+
    i. ~$ cd kafka/
    
    ~/kafka$ bin/zookeeper-server-start.sh config/zookeeper.properties
-      
+   
    ii.  ~$ cd kafka/
+   
         ~/kafka$ bin/kafka-server-start.sh config/server.properties
+        
     iii. ~/kafka$ bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1      --topic housingprice
+    
     iv. source hackathon2/bin/activate
+    
         cd HousingPricePrediction
+        
         spark-submit --jars home/ravikumar/spark-streaming-kafka-0-8-assembly_2.11-2.4.3.jar wsgi.py
+        
         Result : UI has been brought up. you may supply required values and click on predict.
         You will be able to see the predcited SalePrice.
 
@@ -24,7 +31,7 @@ Housingpriceprediction
 ### run below commands to bring kafka zookeeper services, kafka topic and then run the spark-submit job to start fake streaming and prediction.
     i. ~$ cd kafka/
       ~/kafka$ bin/zookeeper-server-start.sh config/zookeeper.properties
-   ii.  ~$ cd kafka/
+      ii.  ~$ cd kafka/
         ~/kafka$ bin/kafka-server-start.sh config/server.properties
     iii. ~/kafka$ bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1      --topic housingprice
     iv. source hackathon2/bin/activate
@@ -42,7 +49,7 @@ Housingpriceprediction
     i. hive --service metastore
     ii. ~$ cd kafka/
       ~/kafka$ bin/zookeeper-server-start.sh config/zookeeper.properties
-   iii.  ~$ cd kafka/
+      iii.  ~$ cd kafka/
         ~/kafka$ bin/kafka-server-start.sh config/server.properties
     iv. ~/kafka$ bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1      --topic housingprice
     v. source hackathon2/bin/activate
@@ -57,7 +64,11 @@ Housingpriceprediction
 
 ### 4. Docker- compose solution for the 2nd solution above.
    setup is almost completed. servicecs are coming up. but However solution is trying to bring zookeeper and kafka services twice on the same port due to which docker-compose build is not successfull.
-
+   
+   source hackathon2/bin/activate
+   cd HousingPricePrediction
+   sudo docker-compose up --build
+ 
    result : 80% completed.
    Please refer to HousingPricePrediction/application_screens.docx for screenshots of the applications.
 
