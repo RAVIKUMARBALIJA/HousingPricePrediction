@@ -4,12 +4,21 @@ from utils import loadcolumns,load_predictor,loaddtypes
 from preprocessor import load_encoder
 import numpy as np
 
-
+"""
 def preprocess_data(record):
     encoder=load_encoder()
-    line = np.array(record.split(',')).reshape(1,-1)
+    line = np.array(str(record).split(',')).reshape(1,-1)
     record=pd.DataFrame(line,columns=loadcolumns())
     record=record.astype(dtype=loaddtypes(),copy=True)
+    record=encoder.transform(record)
+    return record
+"""
+def preprocess_data(record):
+    #print(record)
+    #print(type(record))
+    encoder=load_encoder()
+    record=pd.DataFrame(np.array(str(record).split(',')).reshape(1,-1),columns=loadcolumns())
+    record=record.astype(dtype=loaddtypes(),copy=True,errors='ignore')
     record=encoder.transform(record)
     return record
 
