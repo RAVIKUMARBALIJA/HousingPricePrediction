@@ -8,6 +8,13 @@ Housingpriceprediction
  
  pyspark : 2.4.6
  
+ hadoop : 2.8.5
+ 
+ kafka : 2.12.-2.2.0
+ 
+ hive : 2.3.5
+ 
+ 
 
 ## Without Docker
 ### Flask - pyspark - kafka  - Ui integration - successfull
