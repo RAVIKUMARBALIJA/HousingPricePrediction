@@ -62,11 +62,14 @@ Housingpriceprediction
 ### 4. Docker- compose solution for the 2nd solution above.
    setup is almost completed. servicecs are coming up. but However solution is trying to bring zookeeper and kafka services twice on the same port due to which docker-compose build is not successfull.
    
-   
    i. cd hackathon
+   
    ii. source hackathon2/bin/activate
+   
    iii. cd HousingPricePrediction
+   
    iv. sudo docker-compose up --build
+   
  
    result : 80% completed.
    Please refer to HousingPricePrediction/application_screens.docx for screenshots of the applications.
