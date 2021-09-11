@@ -3,6 +3,11 @@ Housingpriceprediction
 
 ## Please find below instructions on how to test
 
+## Used :
+ python : 3.6.9
+ pyspark : 2.4.6
+ 
+
 ## Without Docker
 ### Flask - pyspark - kafka  - Ui integration - successfull
 ### 1. run below commands to bring kafka zookeeper services, kafka topic and then run the spark-submit job to bring the application up./
